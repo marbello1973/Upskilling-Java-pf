@@ -1,15 +1,17 @@
 package ApiRestfull.AdminGastos;
 
 import ApiRestfull.AdminGastos.dto.request.GastosRequestDto;
+
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GastosControllerTest {
@@ -29,16 +31,14 @@ public class GastosControllerTest {
         requestDto.setDate("2002/12/12");
 
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(
-                "http://localhost:" + port + "/api/v1/gastos",
-                requestDto,
-                String.class
+        "http://localhost:" + port + "/api/v1/gastos",
+            requestDto,
+            String.class
 
         );
-
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals("Register ok",responseEntity.getBody());
-
-
-
     }
+
+
 }

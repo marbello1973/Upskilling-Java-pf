@@ -55,6 +55,9 @@ public class GastosServicesImpl implements GastosServices {
         List<GastosResponseDto> gastosResponseDtos = gastos.stream()
                 .map(this::mapToResponseDto)
                 .collect(Collectors.toList());
+        if(gastosResponseDtos.isEmpty()){
+            throw new GastosNotFoundException("Not list");
+        }
         return gastosResponseDtos;
     }
 

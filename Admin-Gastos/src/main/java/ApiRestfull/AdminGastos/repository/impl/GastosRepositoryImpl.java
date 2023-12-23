@@ -18,6 +18,12 @@ public class GastosRepositoryImpl implements GastosRepository, querysInterface {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+//    private boolean existsById(Long id){
+//        String sql = SELECT_GASTOS_BY_ID;
+//        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id);
+//        return count != null && count > 0;
+//    }
+
     @Override
     public Integer createGasto(Gastos gastos) {
         return jdbcTemplate.update(INSERT_INTO_GASTOS,
@@ -41,6 +47,9 @@ public class GastosRepositoryImpl implements GastosRepository, querysInterface {
 
     @Override
     public void deleteGastos(Long id) {
+//        if(!existsById(id)){
+//            throw new GastosNotFoundException("Not found " + id);
+//        }
         String sql = DELETE_FROM_GASTOS_BY_ID;
         int rowsAffected = jdbcTemplate.update(sql, id);
         if(rowsAffected == 0){

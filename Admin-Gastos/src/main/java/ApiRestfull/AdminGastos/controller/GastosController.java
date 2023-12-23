@@ -40,7 +40,7 @@ public class GastosController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGastos(@PathVariable Long id) throws GastosNotFoundException{
         gastosServices.deleteGastos(id);
-        return ResponseEntity.status(HttpStatus.GONE).body("Deleted " +id);
+        return ResponseEntity.status(HttpStatus.GONE).body("Deleted gasto " + id);
     }
 
     @GetMapping()
